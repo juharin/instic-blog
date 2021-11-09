@@ -13,7 +13,7 @@ export default function PostPreview({
   slug,
 }) {
   return (
-    <div>
+    <div className="mr-4 mb-4">
       <div className="mb-5">
         <CoverImage
           title={RichText.asText(title)}
@@ -29,10 +29,11 @@ export default function PostPreview({
         </Link>
       </h3>
       <div className="text-lg mb-4">
+        <div className="mb-4">
+          <Avatar name={author.name} picture={author.picture} />
+        </div>
         <Date dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
     </div>
   )
 }
