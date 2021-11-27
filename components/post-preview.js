@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import Avatar from '../components/avatar'
-import Date from '../components/date'
+import Author from './author'
 import CoverImage from './cover-image'
+import PostType from './post-type'
 
 export default function PostPreview({
   title,
@@ -11,6 +11,7 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
+  type
 }) {
   return (
     <div className="mr-4 mb-4">
@@ -21,19 +22,15 @@ export default function PostPreview({
           url={coverImage.url}
         />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
+      <div><PostType>{type}</PostType></div>
+      <h3 className="text-3xl mb-6 leading-snug">
         <Link href={`/posts/${slug}`}>
           <a className="hover:underline">
             <RichText render={title} />
           </a>
         </Link>
       </h3>
-      <div className="text-lg mb-4">
-        <div className="mb-4">
-          <Avatar name={author.name} picture={author.picture} />
-        </div>
-        <Date dateString={date} />
-      </div>
+      <Author date={date} author={author} />
     </div>
   )
 }

@@ -8,6 +8,7 @@ import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
+import PostType from '../../components/post-type'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import { CMS_NAME } from '../../lib/constants'
@@ -33,11 +34,13 @@ export default function Post({ post, morePosts, preview }) {
                 </title>
                 <meta property="og:image" content={post.coverimage.url} />
               </Head>
+              <PostType>{post.post_type}</PostType>
               <PostHeader
                 title={post.title}
                 coverImage={post.coverimage}
                 date={post.date}
                 author={post.author}
+                excerpt={post.excerpt}
               />
               <PostBody content={post.content} />
             </article>
